@@ -1,0 +1,47 @@
+---
+swagger: "2.0"
+info:
+  description: "This is test server"
+  version: "1.0.0"
+  title: "Doubtnut"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "omar.aloukik@gmail.com"
+host: "localhost:8080"
+basePath: "/api/v1"
+tags:
+- name: "Doubtnut"
+  description: "pdf APIs"
+schemes:
+- "http"
+paths:
+  /getPDF:
+    post:
+      tags:
+      - "PDF_mangement"
+      summary: "request a pdf"
+      description: ""
+      operationId: "getPDF"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "all keywords"
+        required: true
+        schema:
+          $ref: "#/definitions/getPDF"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/getPDF"
+        "400":
+          description: "somthing went wrong"
+      x-swagger-router-controller: PDFMangement
+definitions:
+  getPDF:
+    type: "object"
+    xml:
+      name: "viewItem"
